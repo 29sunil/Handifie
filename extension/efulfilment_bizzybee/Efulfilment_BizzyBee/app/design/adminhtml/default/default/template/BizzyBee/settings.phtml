@@ -1,0 +1,58 @@
+<?php 
+$BizzyBee_identity = Mage::registry('BizzyBee_identity'); 
+$BizzyBee_auth = Mage::registry('BizzyBee_auth'); 
+$BizzyBee_sonse = Mage::registry('BizzyBee_sonse'); 
+$BizzyBee_ping = Mage::registry('BizzyBee_ping'); 
+?>
+<h1>Bizzy Bee Settings</h1>
+<form class="form" action="<?php echo Mage::getUrl('BizzyBee/index/save'); ?>" method="post">
+    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+
+    <div class="fieldset fieldset-wide" id="group_fields7">
+        <table cellspacing="0" class="form-list" style="width:100%">
+            <tbody> 
+                <tr>
+                    <td class="label"><label for="bizzybee_api"><b>Api <span class="required">*</span></b></label></td>
+                    <td class="value">
+                        <input type="text" style="<?php if($BizzyBee_ping->error) { echo 'background-color: #F2DEDE;'; } else { echo 'background-color: #7AD03A;'; }?>" name="bizzybee_identity" class="input-text" value="<?php if(!empty($BizzyBee_ping->message)){echo $BizzyBee_ping->message;} ?>" disabled>
+                    </td>
+                </tr>    
+                <tr>
+                    <td class="label"><label for="bizzybee_identity"><b>Identity <span class="required">*</span></b></label></td>
+                    <td class="value">
+                        <input type="text" name="bizzybee_identity" class="input-text" value="<?php if(!empty($BizzyBee_identity)){echo $BizzyBee_identity;} ?>">
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="label"><label for="bizzybee_authentication"><b>Authentication <span class="required">*</span></b></label></td>
+                    <td class="value">
+                        <input type="text" name="bizzybee_authentication" class="input-text" value="<?php if(!empty($BizzyBee_auth)){echo $BizzyBee_auth;} ?>">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label"><label for="bizzybee_sonse"><b>Sonce <span class="required">*</span></b></label></td>
+                    <td class="value">
+                        <input type="text" name="bizzybee_sonse" class="input-text" value="<?php if(!empty($BizzyBee_sonse) || $BizzyBee_sonse == 0){echo $BizzyBee_sonse;} ?>">
+                    </td>
+                </tr>
+
+                <tr>
+                <td class="label"></td>
+                    <td class="value">
+                        <div class="actions-toolbar">
+                            <div class="primary">
+                                <button type="submit" class="action submit primary" title="<?php echo __('Submit') ?>">
+                                    <span><?php echo __('Submit') ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+</form>
